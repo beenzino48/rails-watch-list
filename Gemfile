@@ -53,3 +53,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rspec-rails', group: [ :test ]
 gem 'rails-controller-testing', group: [ :test ]
+
+# gem for security of my cloudinary keys
+gem 'dotenv-rails', groups: [:development, :test]
+
+# cloudinary gem
+gem 'cloudinary', '~> 1.16.0'
