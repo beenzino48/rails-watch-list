@@ -1,6 +1,4 @@
 class BookmarksController < ApplicationController
-  # before_action :set_bookmark, only: :destroy
-  # before_action :set_list, only: [:new, :create]
 
   def new
     @list = List.find(params[:list_id])
@@ -9,9 +7,12 @@ class BookmarksController < ApplicationController
   end
 
   def create
+    # make a new bookmark using the strong params
     @bookmark = Bookmark.new(bookmark_params)
+    # Get the list_id from its params
     @list = List.find(params[:list_id])
 
+    # call the bookmark which is nested in the list
     @bookmark.list = @list
 
     if @bookmark.save
@@ -40,13 +41,3 @@ class BookmarksController < ApplicationController
     @list = List.find(params[:list_id])
   end
 end
-
-# create_table "bookmarks", force: :cascade do |t|
-#   t.text "comment"
-#   t.bigint "list_id", null: false
-#   t.bigint "movie_id", null: false
-#   t.datetime "created_at", precision: 6, null: false
-#   t.datetime "updated_at", precision: 6, null: false
-#   t.index ["list_id"], name: "index_bookmarks_on_list_id"
-#   t.index ["movie_id"], name: "index_bookmarks_on_movie_id"
-# end

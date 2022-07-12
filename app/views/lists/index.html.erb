@@ -1,4 +1,20 @@
-<h1>index page with the list of movies</h1>
-<% @lists.each do |list| %>
-<%= list.name %>
-<% end %>
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="https://images.unsplash.com/photo-1596687530420-4214d0e2ff0b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bW92aWUlMjBsb2dvfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" width="30" height="30" class="d-inline-block align-top" alt="">
+    My list</a>
+    <%= link_to "Add a list", new_list_path(@list), class: "btn btn-primary" %>
+</nav>
+
+<div class="container">
+  <h1 class="text-center my-5"></h1>
+    <div class="row">
+    <% @lists.each do |list| %>
+      <div class="col-6 col-lg-4">
+        <div class="card mb-3">
+          <h1><%= list.name %></h1>
+          <%= link_to "More details", list_path(list), class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+    </div>
+</div>
