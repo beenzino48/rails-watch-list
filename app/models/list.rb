@@ -8,4 +8,6 @@ class List < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   # This lets get you from bookmarks to movies
   has_many :movies, through: :bookmarks
+  # for heroku and cloudinary photos
+  has_one_attached :photo
 end

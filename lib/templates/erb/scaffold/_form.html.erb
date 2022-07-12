@@ -13,3 +13,10 @@
     <%%= f.button :submit %>
   </div>
 <%% end %>
+
+
+<%= simple_form_for(article) do |f| %>
+  <!-- [...] -->
+  <%= f.input :photo, as: :file %>
+  <!-- [...] -->
+<% end %>
