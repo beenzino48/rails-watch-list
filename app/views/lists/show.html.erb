@@ -1,13 +1,13 @@
-<div class="class container">
-  <h1 class="text-center my-5">movie name</h1>
-    <div class="class row">
-        <div class="col-6">
+<div class="container">
+  <h1 class="text-center my-5"></h1>
+    <div class="row">
+    <% @list.movies.each do |movie| %>
+      <div class="col-6 col-lg-4">
         <div class="card mb-3">
-      <% @list.movies.each do |movie| %>
-        <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
-        <h5><%= movie.title %></h5>
+          <h1><%= movie.title %></h1>
+          <p><%= movie.overview %></p>
         </div>
       </div>
-      <% end %>
+    <% end %>
     </div>
 </div>

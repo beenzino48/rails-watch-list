@@ -10,7 +10,10 @@ class BookmarksController < ApplicationController
 
   def create
     @bookmark = Bookmark.new(bookmark_params)
+    @list = List.find(params[:list_id])
+
     @bookmark.list = @list
+
     if @bookmark.save
       redirect_to list_path(@list)
     else
@@ -19,9 +22,8 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
-    # @bookmark = Bookmark.find(params[:id])
+    @bookmark = Bookmark.find(params[:id])
     @bookmark.destroy
-    raise
   end
 
   private
@@ -30,13 +32,13 @@ class BookmarksController < ApplicationController
     params.require(:bookmark).permit(:comment, :movie_id)
   end
 
-  # def set_bookmark
-  #   @bookmark = Bookmark.find(params[:id])
-  # end
+  def set_bookmark
+    @bookmark = Bookmark.find(params[:id])
+  end
 
-  # def set_list
-  #   @list = List.find(params[:list_id])
-  # end
+  def set_list
+    @list = List.find(params[:list_id])
+  end
 end
 
 # create_table "bookmarks", force: :cascade do |t|
