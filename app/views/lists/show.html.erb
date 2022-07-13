@@ -1,3 +1,17 @@
+<div class="container m-3 bg-white rgba(86, 61, 124)">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"><%= @list.name.capitalize %></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to "Home", lists_path(@list), class: "btn bg-light" %>
+                <%= link_to "New list", new_list_path(@list), class: "btn bg-light" %>
+      </li></div>
+</nav>
+
 <div class="container">
   <h1 class="text-center my-5"></h1>
     <div class="row">
@@ -6,6 +20,8 @@
         <div class="card mb-3">
           <h1><%= movie.title %></h1>
           <p><%= movie.overview %></p>
+           <%= image_tag movie.poster_url, alt: movie.title, class: "movie-img rounded-top" %>
+          <%= movie.rating %>
         </div>
       </div>
     <% end %>
