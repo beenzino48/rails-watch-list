@@ -18,7 +18,7 @@
       <div class="col-6 col-lg-4">
         <div class="card mb-3 bg-light">
           <% if list.photo.attached?  %>
-            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
+          <%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill %>
             </div>
           <% else %>
             <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://loremflickr.com/320/240')">
