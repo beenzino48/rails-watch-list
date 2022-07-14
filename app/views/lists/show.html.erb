@@ -7,23 +7,30 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <%= link_to "Home", root_path(@list), class: "btn bg-light" %>
-                <%= link_to "New list", new_list_path(@list), class: "btn bg-light" %>
+        <%= link_to "Home", lists_path(@list), class: "btn bg-light" %>
+                <%= link_to "New bookmark", new_list_bookmark_path(@list), class: "btn bg-light" %>
+                </button>
+      <%= link_to "delete this list", list_path(@list), method: :delete, class: "btn btn-cancel", data: { confirm: "Are you sure you want to delete this list?" } %>
+      </div>
       </li></div>
 </nav>
 
 <div class="container">
   <h1 class="text-center my-5"></h1>
     <div class="row">
-    <% @list.movies.each do |movie| %>
+    <% @list.bookmarks.each do |bookmark|  %>
       <div class="col-6 col-lg-4">
         <div class="card mb-3">
+          <% movie = Movie.find(bookmark.movie_id) %>
           <h1><%= movie.title %></h1>
           <p><%= movie.overview %></p>
-           <%= image_tag movie.poster_url, alt: movie.title, class: "movie-img rounded-top" %>
+          <%= link_to "delete", bookmark_path(bookmark), method: :delete %>
+          <%= image_tag movie.poster_url, alt: movie.title, class: "movie-img rounded-top" %>
           <%= movie.rating %>
         </div>
       </div>
     <% end %>
     </div>
 </div>
+
+/lists/:list_id/bookmarks/:id(.:format)

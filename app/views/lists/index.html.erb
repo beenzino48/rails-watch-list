@@ -1,31 +1,26 @@
-<div class="container m-3">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">🎞My lists</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+<div class="container">
+<nav class="navbar navbar-light bg-light px-3">
+  <a class="navbar-brand" href="#">Stream movies online for free!🏴‍☠️</a>
       <li class="nav-item active">
-        <%= link_to "Home", root_path(@list), class: "btn bg-light" %>
+        <%= link_to "Home", lists_path(@list), class: "btn bg-light" %>
                 <%= link_to "New list", new_list_path(@list), class: "btn bg-light" %>
-
-      </li></div>
+      </li>
 </nav>
 
-<div class="header bg-light">
-  <p class=" text-center text-dark ">  If you are looking to have fun and thrilling times with the help movies and series, you have reached the most effective and robust website for this purpose. The best part is the fact that online free movies are highly accessible in an easy way, with lots of choices and variety. If you live with movie enthusiasts, then you need to be aware of the many popular and famous movies that you could access.<p>
-
+<div class="banner" style="background-image">
+<h1>Bookmarks all the films you would like to watch "legally"</h1>
+<p></p>
 </div>
 
-<div class="container m-1 bg-dark">
   <h1 class="text-center my-5 text-white"></h1>
     <div class="row">
     <% @lists.each do |list| %>
       <div class="col-6 col-lg-4">
         <div class="card mb-3 bg-light">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
+</div>
           <h1><%= list.name %></h1>
-          <%= link_to "More details", root_path(list), class: "btn bg-secondary" %>
+          <%= link_to "More details", list_path(list), class: "btn bg-secondary" %>
         </div>
       </div>
     <% end %>
