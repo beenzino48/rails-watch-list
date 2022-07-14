@@ -17,10 +17,13 @@
     <% @lists.each do |list| %>
       <div class="col-6 col-lg-4">
         <div class="card mb-3 bg-light">
-        <%= if list.photo.key.attached? %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
-        <%= else default_url: 'noimage/:style.png' %>
-</div>
+          <% if list.photo.attached?  %>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
+            </div>
+          <% else %>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://loremflickr.com/320/240')">
+            </div>
+          <% end %>
           <h1><%= list.name %></h1>
           <%= link_to "More details", list_path(list), class: "btn bg-secondary" %>
         </div>
